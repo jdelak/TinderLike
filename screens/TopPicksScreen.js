@@ -1,10 +1,16 @@
 import React from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View, TouchableWithoutFeedback  } from "react-native";
 import { Text, Tile } from 'react-native-elements';
 import { TopPicksScreenPics } from "../constants/Pics";
 
 class TopPicksScreen extends React.Component {
+
+  _displayDetailCard = (id) => {
+    console.log("Display Card with id " + id)
+    this.props.navigation.navigate("Card", { id: id})
+  }
+
     render() {
         return (
             <SafeAreaView>
@@ -16,7 +22,9 @@ class TopPicksScreen extends React.Component {
                         Featured profiles of the day, picked just for you
                     </Text>
                     <View style={styles.grid}>
-                        {TopPicksScreenPics.map(({ pic, title, caption }, i) => (
+
+                        {TopPicksScreenPics.map(({id, pic, title, caption }, i) => (
+                          <TouchableWithoutFeedback onPress={() => displayDetailCard(id)}>
                             <Tile
                                 imageSrc={pic}
                                 activeOpacity={0.9}
@@ -27,7 +35,9 @@ class TopPicksScreen extends React.Component {
                                 featured
                                 key={title}
                             />
+                            </TouchableWithoutFeedback>
                         ))}
+
                     </View>
                 </ScrollView>
             </SafeAreaView>
