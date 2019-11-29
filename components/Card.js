@@ -1,5 +1,5 @@
 import React from 'react'
-import { Platform, StyleSheet } from 'react-native'
+import { Platform, StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import { Tile } from 'react-native-elements'
 import Layout from '../constants/Layout'
 
@@ -7,6 +7,8 @@ const BOTTOM_BAR_HEIGHT = !Platform.isPad ? 29 : 49; // found from https://stack
 
 export const Card = ({ id, pic, title, caption }) => (
 
+
+    <View>
     <Tile
         imageSrc={pic}
         imageContainerStyle={styles.imageContainer}
@@ -18,6 +20,8 @@ export const Card = ({ id, pic, title, caption }) => (
         containerStyle={styles.container}
         featured
     />
+    </View>
+
 );
 
 const styles = StyleSheet.create({
@@ -41,4 +45,11 @@ const styles = StyleSheet.create({
         left: 10,
         bottom: 10,
     },
+    favorite_container: {
+      alignItems: 'center', // Alignement des components enfants sur l'axe secondaire, X ici
+    },
+    favorite_image: {
+      width: 40,
+      height: 40
+    }
 });

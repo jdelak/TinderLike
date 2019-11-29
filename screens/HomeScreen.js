@@ -29,8 +29,8 @@ class HomeScreen extends React.Component {
                         },
                       },
                       right: {
-                        title: 'LIKE',
-                        element: <OverlayLabel label="LIKE" color="#4CCC93" />,
+                        title: 'FAVORITE',
+                        element: <OverlayLabel label="FAVORITE" color="#4CCC93" />,
                         style: {
                           wrapper: {
                             ...styles.overlayWrapper,

@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 11942,
+  "expoServerNgrokUrl": "https://79-cjs.anonymous.tinderlike.exp.direct",
+  "packagerNgrokUrl": "https://packager.79-cjs.anonymous.tinderlike.exp.direct",
+  "ngrokPid": 12040,
   "webpackServerPort": null
 }
