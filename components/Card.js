@@ -3,16 +3,22 @@ import { Platform, StyleSheet, View, Text, TouchableOpacity } from 'react-native
 import { Tile } from 'react-native-elements'
 import Layout from '../constants/Layout'
 
+
 const BOTTOM_BAR_HEIGHT = !Platform.isPad ? 29 : 49; // found from https://stackoverflow.com/a/50318831/6141587
 
+//const { card } = this.state
 export const Card = ({ id, pic, title, caption }) => (
+
 
 
     <View>
     <Tile
+
         imageSrc={pic}
         imageContainerStyle={styles.imageContainer}
         activeOpacity={0.9}
+        id = {id}
+        idStyle={styles.id}
         title={title}
         titleStyle={styles.title}
         caption={caption}
@@ -35,6 +41,11 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         overflow: 'hidden', // this does magic
     },
+    id:{
+      position: 'absolute',
+      left:10,
+      bottom:50
+    },
     title: {
         position: 'absolute',
         left: 10,
@@ -53,3 +64,8 @@ const styles = StyleSheet.create({
       height: 40
     }
 });
+
+
+
+
+export default Card

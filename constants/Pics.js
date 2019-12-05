@@ -107,18 +107,18 @@ export const HomeScreenPics = shuffleArray([
         id:18,
         pic: require('../assets/images/men/men8.jpg'),
         title: 'Chandler, 35',
-        caption: '29 miles away',
+        caption: 'IT Recruiter',
     },
     {
         id:19,
         pic: require('../assets/images/men/men9.jpg'),
         title: 'Joey, 29',
-        caption: '17 miles away',
+        caption: 'Java Enthousiast',
     },
     {
         pic: require('../assets/images/men/men10.jpg'),
         title: 'Alfie, 37',
-        caption: '27 miles away',
+        caption: 'Marketing Director',
     },
 ]);
 

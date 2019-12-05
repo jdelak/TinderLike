@@ -5,6 +5,9 @@ import { Card } from '../components/Card'
 import { HomeScreenPics } from '../constants/Pics'
 import { StyleSheet } from 'react-native'
 import OverlayLabel  from '../components/OverlayLabel'
+import { connect } from 'react-redux'
+import { actions } from '../Store/Reducers/actions.js'
+
 
 
 class HomeScreen extends React.Component {
@@ -16,11 +19,15 @@ class HomeScreen extends React.Component {
       passOk:'test',
       user:'',
       pass:'',
-      isLoggin:false
+      isLoggin:false,
+      //likedCards:[]
     }
   }
 
-
+  _toggleFavorite(card) {
+    const action = { type: "TOGGLE_LIKE", card: card }
+    this.props.dispatch(action)
+  }
 
   verifLog() {
 
@@ -31,17 +38,22 @@ class HomeScreen extends React.Component {
 
 
   render() {
+
     let {isLoggin} = this.state;
       if(isLoggin){
+      const { cardIndex } = this.props;
       return (
           <SafeAreaView style={styles.container}>
-              <Swiper cards={HomeScreenPics}
+              <Swiper
+                      cards={HomeScreenPics}
                       renderCard={Card}
                       infinite //looping cards infinitely
                       backgroundColor="white"
                       cardHorizontalMargin={0}
                       stackSize={2} //number of cards shown in background
-                      onSwipedRight={() => {console.log('onSwipedRight')}}
+                      cardIndex={cardIndex}
+                      //onSwipedRight={(CardIndex) => {console.log('onSwipedRight '+CardIndex+' '+Card)}}
+                      onSwipedRight = {(CardData, CardIndex) => {this._toggleFavorite(CardIndex),console.log(CardIndex), console.log(this.state.likedCards)}}
                       animateOverlayLabelsOpacity
                       overlayLabels={{
                         left: {
@@ -119,4 +131,18 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HomeScreen
+
+const mapStateToProps = (state) => {
+  return {
+    likedCards: state.likedCards
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatch: (action) => { dispatch(action) }
+  }
+}
+
+
+  export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

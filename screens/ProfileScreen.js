@@ -5,7 +5,7 @@ import Layout from '../constants/Layout'
 import { HomeScreenPics } from '../constants/Pics'
 import { randomNo } from '../utils/randomNo'
 
-const { pic, title } = HomeScreenPics[randomNo(1, HomeScreenPics.length)];
+const { pic, title } = HomeScreenPics[1];
 
 const Social = ({ name }) => (
     <Icon
