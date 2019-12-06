@@ -20,12 +20,19 @@ class HomeScreen extends React.Component {
       user:'',
       pass:'',
       isLoggin:false,
-      //likedCards:[]
+      card: undefined
     }
   }
 
-  _toggleFavorite(card) {
-    const action = { type: "TOGGLE_LIKE", card: card }
+  componentDidUpdate() {
+    console.log("likedCards : ")
+    console.log(this.props.likedCards)
+    console.log("Card : ")
+    console.log(this.state.card)
+  }
+
+  _toggleFavorite() {
+    const action = { type: "TOGGLE_LIKE", value: this.state.card }
     this.props.dispatch(action)
   }
 
@@ -45,6 +52,9 @@ class HomeScreen extends React.Component {
       return (
           <SafeAreaView style={styles.container}>
               <Swiper
+                    ref={swiper => {
+                      this.swiper = swiper;
+                    }}
                       cards={HomeScreenPics}
                       renderCard={Card}
                       infinite //looping cards infinitely
@@ -52,8 +62,7 @@ class HomeScreen extends React.Component {
                       cardHorizontalMargin={0}
                       stackSize={2} //number of cards shown in background
                       cardIndex={cardIndex}
-                      //onSwipedRight={(CardIndex) => {console.log('onSwipedRight '+CardIndex+' '+Card)}}
-                      onSwipedRight = {(CardData, CardIndex) => {this._toggleFavorite(CardIndex),console.log(CardIndex), console.log(this.state.likedCards)}}
+                      onSwipedRight = {(CardData, CardIndex) => {this.setState({card:this.swiper["props"]["cards"][CardData]}),this._toggleFavorite(),console.log(CardIndex), console.log(this.state.card)}}
                       animateOverlayLabelsOpacity
                       overlayLabels={{
                         left: {

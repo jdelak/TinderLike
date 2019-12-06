@@ -13,7 +13,7 @@ function toggleLike(state = initialState, action) {
         }
       }
       else {
-        // Le contact n'est pas dans les films favoris, on l'ajoute à la liste
+        // Le contact n'est pas dans les favoris, on l'ajoute à la liste
         nextState = {
           ...state,
           likedCards: [...state.likedCards, action.value]
